@@ -86,15 +86,15 @@ class TiledLevel extends TiledMap
 
 	private function loadTileSetTileObjects(tileSet:TiledTileSet):Array<Dynamic>
 	{
-		var tilesetIDs:Array<Int> = [];
 		var tileObjects:Array<Dynamic> = [];
 
-		// get all Tiled Tile objects collisions
+		// get all Tiled Tile objects
 		for (i in 0...tileSet.tileProps.length)
 		{
 			if (tileSet.tileProps[i] != null)
 			{
-				tileObjects[i] = tileSet.tileProps[i].tileObjects;
+				var tileID = tileSet.tileProps[i].tileID;
+				tileObjects[tileID] = tileSet.tileProps[i].tileObjects;
 			}
 		}
 
@@ -104,16 +104,17 @@ class TiledLevel extends TiledMap
 	private function processTileSetTileObjects(tiledLayer:TiledTileLayer, tilemap:FlxTilemapExt, tileSetObjects:Array<Dynamic>)
 	{
 		for (i in 0...tiledLayer.tiles.length)
-		{
+		{	
 			if (tiledLayer.tiles[i] != null)
 			{
+				// tilesetIDs in TiledTileLayer are indexed from 1?
 				var tilesetID:Int = tiledLayer.tiles[i].tilesetID - 1;
 				var tile:FlxPoint = tilemap.getTileCoordsByIndex(i, false);
 
-				// add Tiled Tile Object collisions
+				// add Tiled Tile Objects
 				if (tileSetObjects[tilesetID] != null)
 				{
-					var tileObjects:Dynamic = tileSetObjects[tilesetID];
+					var tileObjects:Array<Dynamic> = tileSetObjects[tilesetID];
 
 					for (j in 0...tileObjects.length)
 					{

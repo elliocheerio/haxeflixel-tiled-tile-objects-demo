@@ -18,6 +18,8 @@ class PlayState extends FlxState
 	{
 		super.create();
 
+		FlxG.log.redirectTraces = true;
+
 		var level = new TiledLevel("assets/level.tmx", this);
 
 		player = new FlxSprite("assets/player.png");
