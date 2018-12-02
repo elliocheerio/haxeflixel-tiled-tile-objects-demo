@@ -13,12 +13,12 @@ This feature will add objects to tiles which were created in the Tile Collision 
 
 ### In Code
 
-Objects are saved as `TiledObject`s and can accessed from `TiledTilePropertySet`
+Objects are saved as `TiledObject`s and can be accessed from `TiledTilePropertySet`
 ``` 
 var propertySet = new TiledTilePropertySet(tileID);
 for (i in 0...propertySet.tileObjects.length)
 {
-    trace('loaded a tile object of type ' + properySet[i].objectType);
+    trace('loaded a tile object of type ' + properySet.tileObjects[i].objectType);
 }
 ```
 
@@ -38,3 +38,13 @@ To add objects to tiles in Tiled Editor:
 
 5. Optionally alter or set the object properties from **Properties**  
 ![Tiled Editor Optional](assets/html_images/tiled_four.png)
+
+### Targets Tested
+
+The following have been manually tested and succesfully compiled and ran
+
+- windows  
+- mac  
+- html5 - *on mac and windows*  
+- flash - *on mac*  
+- neko - *on mac and windows*  
