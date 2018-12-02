@@ -11,6 +11,17 @@ This feature will add objects to tiles which were created in the Tile Collision 
 ![Tiled Editor Demo](assets/html_images/tiled_five.png)  
 *Objects added to tiles, drawn in HaxeFlixel debugger*
 
+### In Code
+
+Objects are saved as `TiledObject`s and can accessed from `TiledTilePropertySet`
+``` 
+var propertySet = new TiledTilePropertySet(tileID);
+for (i in 0...propertySet.tileObjects.length)
+{
+    trace('loaded a tile object of type ' + properySet[i].objectType);
+}
+```
+
 ### In Tiled Editor
 
 To add objects to tiles in Tiled Editor:

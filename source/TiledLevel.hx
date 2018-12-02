@@ -34,7 +34,7 @@ class TiledLevel extends TiledMap
 		
 		FlxG.camera.setScrollBoundsRect(0, 0, fullWidth, fullHeight, true);
 		
-		var tilesetTiledObjects:Array<Dynamic> = [];
+		var tilesetTiledObjects:Array<Array<Array<TiledObject>>> = [];
 
 		// Load Tile Maps
 		for (layer in layers)
@@ -85,11 +85,11 @@ class TiledLevel extends TiledMap
 		state.tiledTileObjects = tileCollisions;
 	}
 
-	private function loadTileSetTileObjects(tileSet:TiledTileSet):Array<Dynamic>
+	private function loadTileSetTileObjects(tileSet:TiledTileSet):Array<Array<TiledObject>>
 	{
-		var tileObjects:Array<Dynamic> = [];
+		var tileObjects:Array<Array<TiledObject>> = [];
 
-		// get all Tiled Tile objects
+		// get all objects which were added to tiles
 		for (i in 0...tileSet.tileProps.length)
 		{
 			if (tileSet.tileProps[i] != null)
@@ -102,7 +102,7 @@ class TiledLevel extends TiledMap
 		return tileObjects;
 	}
 	
-	private function processTileSetTileObjects(tiledLayer:TiledTileLayer, tilemap:FlxTilemapExt, tileSetObjects:Array<Dynamic>)
+	private function processTileSetTileObjects(tiledLayer:TiledTileLayer, tilemap:FlxTilemapExt, tileSetObjects:Array<Array<TiledObject>>)
 	{
 		for (i in 0...tiledLayer.tiles.length)
 		{	
@@ -115,7 +115,7 @@ class TiledLevel extends TiledMap
 				// add Tiled Tile Objects
 				if (tileSetObjects[tilesetID] != null)
 				{
-					var tileObjects:Array<Dynamic> = tileSetObjects[tilesetID];
+					var tileObjects:Array<TiledObject> = tileSetObjects[tilesetID];
 
 					for (j in 0...tileObjects.length)
 					{
