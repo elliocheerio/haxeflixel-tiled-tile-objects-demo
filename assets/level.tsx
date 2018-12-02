@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset name="level" tilewidth="16" tileheight="16" tilecount="16" columns="4">
  <image source="level.png" width="64" height="64"/>
+ <tile id="2">
+  <objectgroup draworder="index">
+   <object id="1" x="2.45902" y="1.96721" width="4.59016" height="4.18033">
+    <ellipse/>
+   </object>
+   <object id="2" x="3.52459" y="10">
+    <polygon points="0,0 -0.491803,3.52459 3.68852,3.44262 5,0.0819672"/>
+   </object>
+   <object id="3" x="11.3934" y="1.88525">
+    <polyline points="0,0 2.95082,3.93443 -0.57377,4.7541 1.47541,7.04918 -0.819672,8.68852"/>
+   </object>
+  </objectgroup>
+ </tile>
  <tile id="4">
   <objectgroup draworder="index">
    <object id="1" x="6" y="9" width="10" height="7"/>

@@ -7,6 +7,7 @@ import flixel.addons.editors.tiled.TiledMap;
 import flixel.addons.editors.tiled.TiledTileLayer;
 import flixel.addons.editors.tiled.TiledTileSet;
 import flixel.addons.editors.tiled.TiledTilePropertySet;
+import flixel.addons.editors.tiled.TiledObject;
 import flixel.group.FlxGroup;
 import flixel.tile.FlxTilemap;
 import flixel.addons.tile.FlxTilemapExt;
@@ -118,16 +119,32 @@ class TiledLevel extends TiledMap
 
 					for (j in 0...tileObjects.length)
 					{
-						var tileCollisionObject:FlxObject = new FlxObject(
-							tile.x + tileObjects[j].x,
-							tile.y + tileObjects[j].y,
-							tileObjects[j].width,
-							tileObjects[j].height);
-						
-						tileCollisionObject.debugBoundingBoxColor = FlxColor.RED;
-						tileCollisionObject.immovable = true;
+						switch (tileObjects[j].objectType)
+						{
+							case 0: // TiledObject.RECTANGLE
+								var tileCollisionObject:FlxObject = new FlxObject(
+									tile.x + tileObjects[j].x,
+									tile.y + tileObjects[j].y,
+									tileObjects[j].width,
+									tileObjects[j].height);
 
-						tileCollisions.add(tileCollisionObject);
+								tileCollisionObject.debugBoundingBoxColor = FlxColor.RED;
+								tileCollisionObject.immovable = true;
+
+								tileCollisions.add(tileCollisionObject);
+
+							case 1: // TiledObject.ELLIPSE
+								trace('add ellipse tile object');
+
+							case 2: // TiledObject.PLOYGON
+								trace('add polygon tile object');
+
+							case 3: // TiledObject.POLYLINE
+								trace('add ployline tile object');
+
+							default:
+								trace('no objectType found for TiledObject');
+						}
 					}
 				}
 			}
